@@ -17,3 +17,14 @@ configuration:
     cache-dir:
       type: string
       description: Directory to use for `MISE_DATA_DIR`. Useful for persistent caches on self-hosted agents.
+    tools:
+      type: array
+      items:
+        type: string
+      description: Specific tools to install (e.g., [erlang, elixir]). When omitted, all tools in the config are installed.
+    checksum:
+      type: string
+      description: SHA256 checksum of the mise binary archive. Verified after download. Fails the step on mismatch.
+    image-installs-dir:
+      type: string
+      description: Directory containing pre-compiled tool installs from a base image (e.g., /opt/mise/installs). Tools are symlinked into MISE_DATA_DIR to avoid recompilation.
